@@ -1,0 +1,76 @@
+<Readers>
+	
+	<Reader xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xsi:type="SourceToObject"
+		Name="Get Computers from source"
+		Order="101"
+		Retries="1"
+		Language="PowerShell"
+		Method="Get-Computers"
+		DataObject="Computer">
+		<InputVariable Name="apiroot" Variable="apiroot" />
+		<InputVariable Name="username" Variable="username" />
+		<InputVariable Name="password" Variable="password" />
+		<InputVariable Name="hardwareSearch" Variable="hardwareSearch" />
+		<OutputSchema Name="ExternalID" Type="bigint" Property="ExternalID" />
+		<OutputSchema Name="ComputerName" Property="ComputerName" Type="nvarchar" Length="256"/>
+		<OutputSchema Name="MACAddress" Type="nvarchar" Length="256" Property="MACAddress" />
+		<OutputSchema Name="ModelNo" Type="nvarchar" Length="128" Property="ModelNo" />
+		<OutputSchema Name="SerialNo" Type="nvarchar" Length="100" Property="SerialNo" />
+		<OutputSchema Name="InventoryAgent" Type="nvarchar" Length="64" Property="InventoryAgent" />
+		<OutputSchema Name="OperatingSystem" Type="nvarchar" Length="256" Property="OperatingSystem" />
+		<OutputSchema Name="ServicePack" Type="nvarchar" Length="128" Property="ServicePack" />
+		<OutputSchema Name="IPAddress" Type="nvarchar" Length="256" Property="IPAddress" />
+		<OutputSchema Name="Manufacturer" Type="nvarchar" Length="128" Property="Manufacturer" />
+		<OutputSchema Name="InventoryDate" Type="datetime" Property="InventoryDate" />
+		<OutputSchema Name="ChassisType" Type="nvarchar" Length="128" Property="ChassisType" />
+		<OutputSchema Name="ProcessorType" Type="nvarchar" Length="256" Property="ProcessorType" />
+		<OutputSchema Name="MaxClockSpeed" Type="int" Property="MaxClockSpeed" />
+		<OutputSchema Name="NumberOfProcessors" Type="int" Property="NumberOfProcessors" />
+		<OutputSchema Name="NumberOfCores" Type="int" Property="NumberOfCores" />
+		<OutputSchema Name="TotalMemory" Type="bigint" Property="TotalMemory" />
+		<OutputSchema Name="LastLoggedOnUser" Type="nvarchar" Length="128" Property="LastLoggedOnUser" />
+		<OutputSchema Name="EmailAddress" Type="nvarchar" Length="256" Property="EmailAddress" />
+	</Reader>
+	<Reader xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xsi:type="SourceToObject"
+		Name="Get Consolidated Installer Evidence from source"
+		Order="201"
+		Retries="1"
+		Language="PowerShell"
+		Method="Get-Apps"
+		DataObject="ConsolidatedInstallerEvidence">
+		<InputVariable Name="apiroot" Variable="apiroot" />
+		<InputVariable Name="username" Variable="username" />
+		<InputVariable Name="password" Variable="password" />
+		<InputVariable Name="softwareSearch" Variable="softwareSearch" />
+		<OutputSchema Name="ComputerID" Type="bigint" Property="ComputerID" />
+		<OutputSchema Name="DisplayName" Type="nvarchar" Length="256" Property="DisplayName" />
+		<OutputSchema Name="Evidence" Type="nvarchar" Length="32" Property="Evidence" />
+		<OutputSchema Name="DatabaseName" Type="nvarchar" Length="32" Property="DatabaseName" /> <!-- required but will be NULL -->
+		<OutputSchema Name="InstanceName" Type="nvarchar" Length="32" Property="InstanceName" /> <!-- required but will be NULL -->
+		<OutputSchema Name="Version" Type="nvarchar" Length="72" Property="Version" /> <!-- required but will be NULL -->
+		<OutputSchema Name="Publisher" Type="nvarchar" Length="200" Property="Publisher" /> <!-- required but will be NULL -->
+		<OutputSchema Name="AccessMode" Type="nvarchar" Length="128" Property="AccessMode" /> <!-- required but will be NULL -->
+		<OutputSchema Name="UserID" Type="int" Property="UserID" /> <!-- required but will be NULL -->
+	</Reader>
+	<Reader xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xsi:type="SourceToObject"
+		Name="Get Consolidated WMI Information for OperatingSystemj from Source"
+		Order="301"
+		Retries="1"
+		Language="PowerShell"
+		Method="Get-OS"
+		DataObject="ConsolidatedWMIEvidence">
+		<InputVariable Name="apiroot" Variable="apiroot" />
+		<InputVariable Name="username" Variable="username" />
+		<InputVariable Name="password" Variable="password" />
+		<InputVariable Name="hardwareSearch" Variable="hardwareSearch" />
+		<OutputSchema Name="ComputerID" Type="bigint" Property="ComputerID" />
+		<OutputSchema Name="ClassName" Type="nvarchar" Length="50" Property="ClassName" />
+		<OutputSchema Name="PropertyName" Type="nvarchar" Length="256" Property="PropertyName" />
+		<OutputSchema Name="PropertyValue" Type="nvarchar" Length="256" Property="PropertyValue" /> 
+		<OutputSchema Name="InstanceName" Type="nvarchar" Length="32" Property="InstanceName" /> <!-- required but will be NULL -->
+	</Reader>
+
+</Readers>
